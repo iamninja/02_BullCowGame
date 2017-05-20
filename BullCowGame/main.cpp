@@ -5,22 +5,29 @@ using namespace std;
 
 // Declarations
 void PrintIntro();
-string GetGuessAndPrintBack();
+void PlayGame();
+string GetGuess();
 
 // Entry point
 int main()
 {
 	PrintIntro();
 
+	PlayGame();
+	
+	return 0; // cool bye
+}
+
+void PlayGame()
+{
 	// Loop for the number of guesses
 	constexpr int MAX_GUESSES = 5;
 	for (int i = 0; i < MAX_GUESSES; i++)
 	{
-		GetGuessAndPrintBack();
+		string Guess = GetGuess();
+		cout << "Your guess was, " << Guess << endl;
 		cout << endl;
 	}
-	
-	return 0;
 }
 
 void PrintIntro()
@@ -35,15 +42,12 @@ void PrintIntro()
 	return;
 }
 
-string GetGuessAndPrintBack() 
+string GetGuess() 
 {
 	// Get the guess
 	string Guess = "";
 	cout << "Enter your guess: ";
 	getline(cin, Guess);
-
-	// Print the guess back
-	cout << "Your guess was, " << Guess << endl;
 
 	return Guess;
 }
