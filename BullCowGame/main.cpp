@@ -7,14 +7,18 @@ using namespace std;
 void PrintIntro();
 void PlayGame();
 string GetGuess();
+bool AskToPlayAgain();
 
 // Entry point
 int main()
 {
-	PrintIntro();
+	bool bPlayAgain = false;
+	do {
+		PrintIntro();
+		PlayGame();
+		bPlayAgain = AskToPlayAgain();
+	} while (bPlayAgain);
 
-	PlayGame();
-	
 	return 0; // cool bye
 }
 
@@ -22,8 +26,7 @@ void PlayGame()
 {
 	// Loop for the number of guesses
 	constexpr int MAX_GUESSES = 5;
-	for (int i = 0; i < MAX_GUESSES; i++)
-	{
+	for (int i = 0; i < MAX_GUESSES; i++) {
 		string Guess = GetGuess();
 		cout << "Your guess was, " << Guess << endl;
 		cout << endl;
@@ -50,4 +53,13 @@ string GetGuess()
 	getline(cin, Guess);
 
 	return Guess;
+}
+
+bool AskToPlayAgain()
+{
+	cout << "Do you want to play again (y/n)? ";
+	string Response = "";
+	getline(cin, Response);
+
+	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
