@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
-
-using namespace std;
+#include "FBullCowGame.h"
 
 // Declarations
 void PrintIntro();
 void PlayGame();
-string GetGuess();
+std::string GetGuess();
 bool AskToPlayAgain();
+
+FBullCowGame BCGame; // Instantiate a new game
 
 // Entry point
 int main()
@@ -24,12 +25,13 @@ int main()
 
 void PlayGame()
 {
+	int MaxTries = BCGame.GetMaxTries();
+
 	// Loop for the number of guesses
-	constexpr int MAX_GUESSES = 5;
-	for (int i = 0; i < MAX_GUESSES; i++) {
-		string Guess = GetGuess();
-		cout << "Your guess was, " << Guess << endl;
-		cout << endl;
+	for (int i = 0; i < MaxTries; i++) {
+		std::string Guess = GetGuess();
+		std::cout << "Your guess was, " << Guess << std::endl;
+		std::cout << std::endl;
 	}
 }
 
@@ -37,29 +39,32 @@ void PrintIntro()
 {
 	// Introduce the game
 	constexpr int WORD_LENGTH = 9;
-	cout << "Welcome to Bulls and Cows\n";
-	cout << "Can you guess the " << WORD_LENGTH
+	std::cout << "Welcome to Bulls and Cows\n";
+	std::cout << "Can you guess the " << WORD_LENGTH
 		<< "-letter isogram I'm thinking off?\n";
-	cout << endl;
+	std::cout << std::endl;
 
 	return;
 }
 
-string GetGuess() 
+std::string GetGuess() 
 {
+	int CurrentTry = BCGame.GetCurrentTry();
 	// Get the guess
-	string Guess = "";
-	cout << "Enter your guess: ";
-	getline(cin, Guess);
+	std::cout << "Try " << CurrentTry << ". ";
+	std::cout << "Enter your guess: ";
+	std::string Guess = "";
+
+	std::getline(std::cin, Guess);
 
 	return Guess;
 }
 
 bool AskToPlayAgain()
 {
-	cout << "Do you want to play again (y/n)? ";
-	string Response = "";
-	getline(cin, Response);
+	std::cout << "Do you want to play again (y/n)? ";
+	std::string Response = "";
+	std::getline(std::cin, Response);
 
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
