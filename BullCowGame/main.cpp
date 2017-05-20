@@ -14,6 +14,7 @@ FBullCowGame BCGame; // Instantiate a new game
 int main()
 {
 	bool bPlayAgain = false;
+
 	do {
 		PrintIntro();
 		PlayGame();
@@ -25,6 +26,7 @@ int main()
 
 void PlayGame()
 {
+	BCGame.Reset();
 	int MaxTries = BCGame.GetMaxTries();
 
 	// Loop for the number of guesses
