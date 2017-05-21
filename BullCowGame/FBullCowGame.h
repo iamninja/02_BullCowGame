@@ -1,6 +1,10 @@
+/* The game logic (no view or user interaction code)
+*/
 #pragma once
+
 #include <string>
 
+// unreal friendly syntax
 using FString = std::string;
 using int32 = int;
 
@@ -31,12 +35,11 @@ public:
 	bool IsGameWon() const;
 	EGuessStatus CheckGuessValidity(FString) const;
 
-	void Reset(); // TODO make a more rich return value
+	void Reset();
 	FBullCowCount SubmitValidGuess(FString);
 	
 private:
 	int32 MyCurrentTry;
-	int32 MyMaxTries;
 	FString MyHiddenWord;
 	bool bGameIsWon;
 

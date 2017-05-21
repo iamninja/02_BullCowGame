@@ -2,11 +2,13 @@
 This acts as the view in a MVC pattern and is responsible for all
 user interaction. For game logic see FBullGame class.
 */
+#pragma once
 
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
 
+// unreal friendly syntax
 using FText = std::string;
 using int32 = int;
 
