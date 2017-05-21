@@ -10,8 +10,10 @@ public:
 	int GetCurrentTry() const;
 	bool IsGameWon() const;
 
-	void Reset(); // TODO
-	bool CheckGuessValidity(std::string); // TODO
+	void Reset(); // TODO make a more rich return value
+	bool CheckGuessValidity(std::string); // TODO 
+
+	// provide a method for counting bulls and cows and increase turn
 	
 private:
 	int MyCurrentTry;
